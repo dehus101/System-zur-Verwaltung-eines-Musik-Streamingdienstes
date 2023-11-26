@@ -1,0 +1,103 @@
+\documentclass[a4paper,11pt]{article}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% 
+
+\def \student { Dennis Husser}
+\def \studentken {dehus101}
+
+\def \sndstudent {Vorname2 Nachname2}
+\def \sndstudentken {vonac001}
+
+\def \blattnummer {2}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% Benötigte Bibliotheken und Makros werden geladen/definiert
+\input{header.tex}
+
+%%% Beginn des eigentlichen Dokuments
+\begin{document}
+\printheader
+
+
+
+
+% Titel der Aufgabe
+\section*{RM ohne Verschmelzung}
+% Lösung der Aufgabe
+\begin{enumerate}
+    \item Nutzer(\underline{Benutzername}, Email, IBAN, Passwort)
+    \item Premium-Nutzer(\underline{$\overline{\text{Nutzer.Benutzername}}$}, Gültigkeitsdauer)
+    \item Künstler(\underline{Pseudonym}, $\overline{\text{Premium-Nutzer.Benutzername}}$, Aktivitätsdatum)
+    \item Podcaster(\underline{$\overline{\text{Künstler.Pseudonym}}$}, Level)
+    \item Musiker (\underline{$\overline{\text{Künstler.Pseudonym}}$}, auftrittfähig)
+    \item Band(\underline{Name}, Bandgeschichte)
+    \item Playlist (\underline{ID}, Name, Sichtbarkeit)
+    \item Kritik(\underline{ID}, Text)
+    \item Aufnahme(\underline{ID}, Dauer, Titel)
+    \item Podcast-Episode(\underline{$\overline{\text{Aufnahme.ID}}$}, Nummer)
+    \item Podcast(\underline{ID}, Name)
+    \item Thema(\underline{ID}, Name)
+    \item Sprache(\underline{ID}, Bezeichnung)
+    \item Song(\underline{$\overline{\text{Aufnahme.ID}}$}, SpeicherortLQ, SpeicherortHQ)
+    \item Genre(\underline{ID}, Bezeichnung)
+    \item Album(\underline{ID}, Bezeichnung, Erscheinungsdatum)
+    \item Nutzer\_like/dislike\_Playlist(\underline{$\overline{\text{Nutzer.Benutzername}}$, $\overline{\text{Playlist.ID}}$}, Wert)
+    \item Nutzer\_gibt\_Kritik(\underline{$\overline{\text{Kritik.ID}}$}, $\overline{\text{Nutzer.Benutzername}}$)
+    \item Kritik\_gehört\_zu\_Album(\underline{$\overline{\text{Kritik.ID}}$}, $\overline{\text{Album.ID}}$)
+    \item Nutzer\_bewertet\_Song(\underline{$\overline{\text{Nutzer.Benutzername}}$, $\overline{\text{Song.ID}}$}, Bewertung)
+    \item Premium-Nutzer\_erstellt\_Playlist(\underline{$\overline{\text{Playlist.ID}}$}, $\overline{\text{Premium-Nutzer.Benutzername}}$)
+    \item Playlist\_enthält\_Aufnahme(\underline{$\overline{\text{Playlist.ID}}$, $\overline{\text{Aufnahme.ID}}$})
+    \item Podcast-Episode\_bildet\_Podcast(\underline{$\overline{\text{Podcast-Episode.ID}}$}, $\overline{\text{Podcast.ID}}$)
+    \item Podcast-Episode\_ist\_in\_Sprache(\underline{$\overline{\text{Podcast-Episode.ID}}$}, $\overline{\text{Sprache.ID}}$)
+    \item Podcast\_behandelt\_Thema(\underline{$\overline{\text{Podcast.ID}}$, $\overline{\text{Thema.ID}}$})
+    \item Künstler\_publiziert\_Aufnahme(\underline{$\overline{\text{Künstler.Pseudonym}}$, $\overline{\text{Aufnahme.ID}}$})
+    \item Podcaster\_arbeitet\_mit(\underline{$\overline{\text{Künstler1.Pseudonym}}$, $\overline{\text{Künstler2.Pseudonym}}$})
+    \item Band\_besteht\_aus\_Musiker(\underline{$\overline{\text{Musiker.ID}}$}, $\overline{\text{Band.ID}}$) 
+    \item Song\_Bestandteil\_von\_Album(\underline{$\overline{\text{Song.ID}}$}, $\overline{\text{Album.ID}}$)
+    \item Song\_hat\_Genre(\underline{$\overline{\text{Song.ID}}$}, $\overline{\text{Genre.ID}}$)
+    \item Musiker\_veröffentlicht\_Album(\underline{$\overline{\text{Album.ID}}$}, $\overline{\text{Musiker.ID}}$)
+    \item Band\_veröffentlicht\_Album(\underline{$\overline{\text{Album.ID}}$}, $\overline{\text{Band.ID}}$)
+
+\end{enumerate}
+% Titel der Aufgabe
+\section*{RM mit Verschmelzung}
+% Lösung der Aufgabe
+\begin{enumerate}
+    \item Nutzer(\underline{Benutzername}, Email, IBAN, Passwort)
+    \item Premium-Nutzer(\underline{$\overline{\text{Nutzer.Benutzername}}$}, Gültigkeitsdauer)
+    \item Künstler(\underline{Pseudonym}, $\overline{\text{Premium-Nutzer.Benutzername}}$, Aktivitätsdatum)
+    \item Podcaster(\underline{$\overline{\text{Künstler.Pseudonym}}$}, Level)
+    \item Musiker (\underline{$\overline{\text{Künstler.Pseudonym}}$}, auftrittfähig)
+    \item Band(\underline{Name}, Bandgeschichte)
+    \item Playlist (\underline{ID}, Name, Sichtbarkeit)
+    \item Kritik(\underline{ID}, Text, $\overline{\text{Nutzer.Benutzername}}$, $\overline{\text{Album.ID}}$)
+    \item Aufnahme(\underline{ID}, Dauer, Titel)
+    \item Podcast-Episode(\underline{$\overline{\text{Aufnahme.ID}}$}, Nummer,  $\overline{\text{Podcast.ID}}$, $\overline{\text{Sprache.ID}}$)
+    \item Podcast(\underline{ID}, Name)
+    \item Thema(\underline{ID}, Name)
+    \item Sprache(\underline{ID}, Bezeichnung)
+    \item Song(\underline{$\overline{\text{Aufnahme.ID}}$}, SpeicherortLQ, SpeicherortHQ, $\overline{\text{Genre.ID}}$)
+    \item Genre(\underline{ID}, Bezeichnung)
+    \item Album(\underline{ID}, Bezeichnung, Erscheinungsjahr)
+    \item Nutzer\_like/dislike\_Playlist(\underline{$\overline{\text{Nutzer.Benutzername}}$, $\overline{\text{Playlist.ID}}$}, Wert)
+    
+    
+    \item Nutzer\_bewertet\_Song(\underline{$\overline{\text{Nutzer.Benutzername}}$, $\overline{\text{Song.ID}}$}, Bewertung)
+    \item Premium-Nutzer\_erstellt\_Playlist(\underline{$\overline{\text{Playlist.ID}}$}, $\overline{\text{Premium-Nutzer.Benutzername}}$)
+    \item Playlist\_enthält\_Aufnahme(\underline{$\overline{\text{Playlist.ID}}$, $\overline{\text{Aufnahme.ID}}$})
+  
+   
+    \item Podcast\_behandelt\_Thema(\underline{$\overline{\text{Podcast.ID}}$, $\overline{\text{Thema.ID}}$})
+    \item Künstler\_publiziert\_Aufnahme(\underline{$\overline{\text{Künstler.Pseudonym}}$, $\overline{\text{Aufnahme.ID}}$})
+    \item Podcaster\_arbeitet\_mit(\underline{$\overline{\text{Künstler1.Pseudonym}}$,$\overline{\text{Künstler2.Pseudonym}}$})
+    \item Band\_besteht\_aus\_Musiker(\underline{$\overline{\text{Musiker.ID}}$}, $\overline{\text{Band.ID}}$) 
+    \item Song\_Bestandteil\_von\_Album(\underline{$\overline{\text{Song.ID}}$}, $\overline{\text{Album.ID}}$)
+
+    \item Musiker\_veröffentlicht\_Album(\underline{$\overline{\text{Album.ID}}$}, $\overline{\text{Musiker.ID}}$)
+    \item Band\_veröffentlicht\_Album(\underline{$\overline{\text{Album.ID}}$}, $\overline{\text{Band.ID}}$)
+\end{enumerate}
+
+
+\end{document}

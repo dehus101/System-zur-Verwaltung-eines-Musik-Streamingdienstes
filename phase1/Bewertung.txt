@@ -1,0 +1,34 @@
+Schwere Fehler:
+
+***
+
+Mittlere Fehler:
+
+**
+
+Leichte Fehler:
+
+* Fehlendes Attribut: Sprache.Bezeichnung
+* Fehlendes Attribut: like/dislike.wert
+
+Anmerkungen:
+
+-
+
+Bewertung:
+
+*** - Schwere Fehler
+** - Mittlere Fehler
+* - Leichte Fehler
+
+Hinweise:
+
+- Bitte wenden Sie sich bei konkreten Fragen zur Korrektur direkt an Ihren zuständigen Korrektor. Nutzen Sie hierfür bitte die Sprechstunden.
+
+Gesamtbewertung des Projektteils: bestanden
+
+2 Fehlerpunkte.
+
+Korrektur von:
+
+Kirill Bogomasov - bogomasov.de

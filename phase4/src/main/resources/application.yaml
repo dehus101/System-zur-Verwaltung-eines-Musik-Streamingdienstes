@@ -1,0 +1,13 @@
+server:
+  port: 8080
+
+security:
+  enable-csrf: false
+
+spring:
+  datasource:
+    url: jdbc:sqlite:database.db
+
+logging:
+  level:
+    org.springframework: debug

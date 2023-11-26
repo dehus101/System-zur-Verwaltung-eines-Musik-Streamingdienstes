@@ -1,0 +1,31 @@
+name: dbs-propra
+
+services:
+  implementation:
+    build: ./
+    container_name: dbs-propra-implementation
+    env_file: .env
+    expose:
+      - "${PROJECT_IMPLEMENTATION_URL_PORT:-8080}"
+    image: dbs-propra-implementation:latest
+    ports:
+      - "${PROJECT_IMPLEMENTATION_URL_PORT:-8080}:${PROJECT_IMPLEMENTATION_URL_PORT:-8080}"
+    volumes:
+      - ./database.db:/app/database.db
+  specification:
+    container_name: dbs-propra-specification
+    image: swaggerapi/swagger-ui:latest
+    environment:
+      - PORT=${PROJECT_SPECIFICATION_URL_PORT:-8090}
+      - URL=openapi.yaml
+      - LAYOUT=BaseLayout
+    expose:
+      - "${PROJECT_SPECIFICATION_URL_PORT:-8090}"
+    ports:
+      - "${PROJECT_SPECIFICATION_URL_PORT:-8090}:${PROJECT_SPECIFICATION_URL_PORT:-8090}"
+    volumes:
+      - ./build/specification/openapi.yaml:/usr/share/nginx/html/openapi.yaml
+
+networks:
+  default:
+    name: dbs-propra-network

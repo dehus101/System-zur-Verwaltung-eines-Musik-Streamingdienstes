@@ -1,0 +1,28 @@
+= Phase 3
+
+
+== Kritische Entscheidungen
+
+* Nutzer_like_dislike_Playlist.Wert:
+- Wert als Varchar angegeben. Der Wertebereich ist: ["like", "dislike"]
+* Nutzer bewertet Song:
+- Song referenziert hierbei eine Song ID. Würde man Aufnahme ID
+referenzieren, so könnte ein Nutzer auch eine Aufnahme an
+sich bzw. eine Podcast Episode bewerten.
+* -IBAN:
+- Es erfolgt keine spezifische Überprüfung der IBAN in der Datenbank.
+- Die IBAN-Validierung sollte in einer Anwendungslogik außerhalb der Datenbank erfolgen.
+* Status: Der Status wird als Text gespeichert. Es wird keine zusätzliche Validierung durchgeführt.
+* Datum:
+- Das Datum wird als Text gespeichert. Es wird nur das Format nicht die Korrektheit des Datums überprüft.
+* Email:
+- Die Überprüfung der E-Mail erfolgt, indem diese in Substrings zerlegt wird. Damit können die verschiedenen
+Anforderungen an X@Y.Z eingehalten werden.
+- Länge der E-Mail wurde auf 256 beschränkt.
+* Nutzer:
+- Festlegung der Attribute Nutzer.Email als UNIQUE. Dadurch wird verhindert, dass gleiche Eigenschaften mehrmals gespeichert werden. Grund dafür ist, dass Name nicht als Primary Key gewählt wurden.
+* Dauer:
+- als Integer weil im Aufgabentext in Sek. steht.
+* Gültigkeitsdauer und Aktivitätsdatum: In Datetime weil Datumsangaben müssen im Format YYYY-MM-DD HH:MM:SS sein.
+* Level:
+- Als Boolean, 1: professionell und 0: nicht professionell

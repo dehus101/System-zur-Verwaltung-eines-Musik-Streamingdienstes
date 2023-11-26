@@ -1,0 +1,134 @@
+%
+%%% IN DIESER DATEI MÜSSEN SIE IN DER REGEL NICHTS ÄNDERN!
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% Pakete, die wir für dieses Latex Dokument verwenden,
+% hier muss in der Regel nichts ergänzt werden, außer
+% wenn Sie ein weiteres Paket verwenden möchten
+
+\setlength {\marginparwidth }{2cm}
+
+% um Umlaute direkt eingeben zu können
+\usepackage[utf8]{inputenc}
+% damit wir das Dokument nach Umlauten durchsuchen können
+\usepackage[T1]{fontenc}
+% die Standardsprache des Dokuments soll Deutsch sein (alt.: english)
+\usepackage[ngerman]{babel}
+% um die Seiten mit Kopf- und Fußzeile zu versehen
+\usepackage{fancyhdr}
+% um die Seitenränder der Abgabe anzupassen
+\usepackage[
+top        = 2cm,
+bottom     = 2cm,
+left       = 2cm,
+right      = 2cm,
+headheight = 17pt,
+includehead,
+includefoot,
+heightrounded]{geometry}
+% zwischen Paragraphen wollen wir eine leere Zeile
+\usepackage{parskip}
+% um mittels \includegraphics Bilder einbinden zu können
+\usepackage{graphicx}
+% um Grafiken zeichnen zu können
+\usepackage{tikz}
+% damit wir Algorithmen in Pseudocode einfach setzen können
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+% für Formel-Umgebungen, fette Buchstaben, usw.
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+% um Tabellen setzen zu können
+\usepackage{tabularx}
+\usepackage{multirow}
+% um Hyperlinks setzen zu können
+\usepackage{hyperref}
+% um Todo Anmerkungen einfügen zu können
+\usepackage{todonotes}
+\usepackage{enumerate}
+\usepackage{ragged2e}
+\usepackage{qtree}
+\usepackage{starfont}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Variablen, die Sie NICHT ändern sollen
+\def \vorlesung {Datenbanken: Weiterführende Konzepte}
+\def \semester {Sommersemester 2023}
+\def \dozent {Prof. Dr. Stefan Conrad}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Layout der Seiten
+
+% wir passen das Layout der 1. Seiten an
+\fancypagestyle{firstPage}{
+  % dafür setzen wir die Standard-Stylings zurück
+  \fancyhf{}
+  % wir wollen oben keine Linie vor der Kopfzeile
+  \renewcommand{\headrulewidth}{0pt}
+  % aber eine Fußzeile mit einer Dicke von 0.5pt
+  \renewcommand{\footrulewidth}{0.5pt}
+  % die Kopfzeile bleibt leer
+  \fancyhead{}
+  % in die Fußzeile ergänzen wir rechts die Seitenzahl
+  \fancyfoot[R]{\thepage}
+}
+
+% wir passen das Layout der restlichen Seite an
+\fancypagestyle{normalPage}{
+  % dafür setzen wir die Standard-Stylings zurück
+  \fancyhf{}
+  % wir wollen oben und unten eine Linie vor der Kopf-
+  \renewcommand{\headrulewidth}{0.5pt}
+  % und der Fußzeile mit einer Dicke von 0.5pt
+  \renewcommand{\footrulewidth}{0.5pt}
+  % oben links kommt die Nummer des Übungsblattes
+  \fancyhead[L]{Phase \blattnummer}
+  % oben rechts der Name des/der Studierenden sowie die zugehörige Email-Adresse
+  \fancyhead[R]{\student\ (\studentken)\ifnum\pdfstrcmp{\sndstudent}{Vorname2 Nachname2}=0
+  	\else
+  	\linebreak\sndstudent\ (\sndstudentken)\fi}
+  % unten links der Name der Vorlesung und das Semester
+  \fancyfoot[L]{\vorlesung, \semester}
+  % und unten rechts die Seitenzahl
+  \fancyfoot[R]{\thepage}
+}
+
+% zwischen Paragraphen soll ein Abstand von 1em sein
+\setlength{\parskip}{1em}
+
+\newcommand{\printheader}{%
+% wir setzen das Layout der 1. Seite
+\thispagestyle{firstPage}
+% und fügen einen Kopf ein
+\textbf{\vorlesung} \hfill \textit{Abgabe von}\\
+\dozent \hfill \student\ (\studentken) \\
+\semester \hfill%
+\ifnum\pdfstrcmp{\sndstudent}{Vorname2 Nachname2}=0
+\else
+\sndstudent\ (\sndstudentken) \fi\\
+Heinrich-Heine-Universität Düsseldorf \hfill \\[2em]
+{\LARGE Phase \blattnummer} \hfill \today \\
+\rule{\textwidth}{0.4pt}
+% wir setzen das Layout der weiteren Seiten
+\pagestyle{normalPage}%
+}
+
+% falls \student oder \studentemail nicht geändert wird, weise die Studierenden darauf hin statt Lösungen anzuzeigen
+\def\nonameset#1#2{%
+  \ifnum\pdfstrcmp{#1}{#2}=0
+\begin{document}
+\printheader
+
+
+
+\end{document}
+\endinput
+\fi
+}
+
+
+
+\nonameset{\student}{Vorname Nachname}
+\nonameset{\studentken}{vonac000}
+
