@@ -42,9 +42,20 @@ public class PremiumnutzerRepoImpl implements PremiumnutzerRepo {
         ArrayList<PremiumNutzer> premiumnutzer = new ArrayList<>();
         while (resultSet.next()) {
             Optional<PremiumNutzer> nutzer = premiumnutzerMapper(resultSet, conn);
-            nutzer.ifPresent(premiumnutzer::add);
+            nutzer.ifPresent(e -> premiumnutzer.add(e));
         }
         return premiumnutzer;
+    }
+
+    @Override
+    public Optional<PremiumNutzer> insertPremiumnutzer(
+            String benutzername, String gueltigkeitstage, Connection conn) throws SQLException {
+        String sql = "INSERT INTO PremiumNutzer (Benutzername, Gültigkeitsdauer) VALUES (?,?);";
+        HashMap<Integer, Object> hm = new HashMap<>();
+        hm.put(1, benutzername);
+        hm.put(2, gueltigkeitstage);
+        executeUpdate(conn, hm, sql);
+        return getPremiumnutzerByBenutzername(benutzername, conn);
     }
 
     @Override
@@ -58,17 +69,6 @@ public class PremiumnutzerRepoImpl implements PremiumnutzerRepo {
             return premiumnutzerMapper(resultSet, conn);
         }
         return Optional.empty();
-    }
-
-    @Override
-    public Optional<PremiumNutzer> insertPremiumnutzer(
-            String benutzername, String gueltigkeitstage, Connection conn) throws SQLException {
-        String sql = "INSERT INTO PremiumNutzer (Benutzername, Gültigkeitsdauer) VALUES (?,?);";
-        HashMap<Integer, Object> hm = new HashMap<>();
-        hm.put(1, benutzername);
-        hm.put(2, gueltigkeitstage);
-        executeUpdate(conn, hm, sql);
-        return getPremiumnutzerByBenutzername(benutzername, conn);
     }
 
     @Override
